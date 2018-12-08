@@ -1,4 +1,4 @@
 module_beef
 ============
 
-FruityWiFi BeEF module
+BlackBlulb BeEF module
