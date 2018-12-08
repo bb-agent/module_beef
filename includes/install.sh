@@ -22,7 +22,7 @@ bundle install
 cd ../
 echo
 echo "setting permissions..."
-chown -R fruitywifi:fruitywifi beef-master
+chown -R blackbulb:blackbulb beef-master
 
 echo
 echo "..DONE.."
